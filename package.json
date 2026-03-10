@@ -1,8 +1,8 @@
 {
-  "name": "template-repo",
+  "name": "to-do-list",
   "version": "1.0.0",
   "type": "module",
-  "description": "         UPDATE THIS FIELD!!!          ",
+  "description": "simple to-do list app",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/J0e-Quan/TEMPLATE-REPO.git"
+    "url": "git+https://github.com/J0e-Quan/to-do-list.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/J0e-Quan/TEMPLATE-REPO/issues"
+    "url": "https://github.com/J0e-Quan/to-do-list/issues"
   },
-  "homepage": "https://github.com/J0e-Quan/TEMPLATE-REPO#readme",
+  "homepage": "https://github.com/J0e-Quan/to-do-list#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.4",
