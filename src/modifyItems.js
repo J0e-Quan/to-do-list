@@ -1,4 +1,5 @@
 import { categories } from "./categories.js";
+import { sortItems } from "./view.js";
 
 let targetItem
 
@@ -31,6 +32,7 @@ function updateDescription(targetItem, newDescription) {
 function updateDueDate(targetItem, newDueDate) {
   if (newDueDate !== '') {
     targetItem.dueDate = newDueDate
+    sortItems(targetItem.category)
   }
 }
 
@@ -43,6 +45,7 @@ function updatePriority(targetItem, newPriority) {
 function updateCategory(targetItem, newCategory) {
   if (newCategory !== '') {
     targetItem.category = newCategory
+
   }
 }
 
