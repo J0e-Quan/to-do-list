@@ -1,3 +1,5 @@
 import * as item from './item.js'
 
-item.newItem('test title', 'adsjflksdjfksd;fj', new Date(2003, 3, 5), 'high', 'default')
+item.newItem('test title', 'adsjflksdjfksd;fj', '2026-10-22', 'high', 'default')
+
+import * as MainModule from './main.js';
