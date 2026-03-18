@@ -1,8 +1,5 @@
 import { compareAsc } from "date-fns"
-
-const categories = {
-  default: [],
-}
+import { categories } from "./categories.js"
 
 export function placeItem(item) {
   const targetCategory = item.category

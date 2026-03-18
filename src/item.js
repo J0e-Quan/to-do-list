@@ -1,5 +1,6 @@
 import { placeItem } from "./view.js"
 import { parseISO } from "date-fns"
+import { categories } from "./categories.js"
 
 window.newItem = newItem
 
@@ -13,28 +14,28 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   let isTicked = false
   const item = {title, description, dueDate, priority, category, id, isTicked}
   placeItem(item)
-  // addComplete(category)
-  // addDelete(category)
+  addComplete(category)
+  addDelete(category)
   return {item}
 }
 
-// function addComplete(category) {
-//   category.forEach(item => {
-//     if (!Object.hasOwn(item, 'isTicked')) {
-//       item.tick = function() {
-//         item.isTicked = true
-//         // code for ticking items
-//       }
-//     }
-//   });
-// } 
+function addComplete(category) {
+  categories[category].forEach(item => {
+    if (!Object.hasOwn(item, 'isTicked')) {
+      item.tick = function() {
+        item.isTicked = true
+        // code for ticking items
+      }
+    }
+  });
+} 
 
-// function addDelete(category) {
-//   category.forEach(item => {
-//     if (!Object.hasOwn(item, 'deleteItem')) {
-//       item.deleteItem = function() {
-//         // delete the item from localStorage and array
-//       }
-//     }
-//   });
-// } 
+function addDelete(category) {
+  categories[category].forEach(item => {
+    if (!Object.hasOwn(item, 'deleteItem')) {
+      item.deleteItem = function() {
+        // delete the item from localStorage and array
+      }
+    }
+  });
+} 
