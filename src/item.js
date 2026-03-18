@@ -2,8 +2,6 @@ import { placeItem } from "./view.js"
 import { parseISO } from "date-fns"
 import { categories } from "./categories.js"
 
-window.newItem = newItem
-
 export function newItem(inputTitle, inputDescription, inputDueDate, inputPriority, inputCategory) {
   let title = inputTitle
   let description = inputDescription
@@ -16,6 +14,7 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   placeItem(item)
   addComplete(category)
   addDelete(category)
+  console.log(id)
   return {item}
 }
 
@@ -39,3 +38,5 @@ function addDelete(category) {
     }
   });
 } 
+
+window.newItem = newItem
