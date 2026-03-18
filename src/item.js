@@ -1,14 +1,15 @@
 import { placeItem } from "./view.js"
+import { parseISO } from "date-fns"
 
 export function newItem(inputTitle, inputDescription, inputDueDate, inputPriority, inputCategory) {
   let title = inputTitle
   let description = inputDescription
-  let dueDate = inputDueDate
+  let dueDate = parseISO(inputDueDate)
   let priority = inputPriority
   let category = inputCategory
   let id = crypto.randomUUID()
   let isTicked = false
-  let item = {title, description, dueDate, priority, category, id, isTicked}
+  const item = {title, description, dueDate, priority, category, id, isTicked}
   placeItem(category, item)
   addComplete(category)
   addDelete(category)
@@ -20,7 +21,7 @@ function addComplete(category) {
   category.forEach(item => {
     if (!Object.hasOwn(item, 'isTicked')) {
       item.tick = function() {
-        isTicked = true
+        item.isTicked = true
         // code for ticking items
       }
     }
