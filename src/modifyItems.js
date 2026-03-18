@@ -22,5 +22,29 @@ function updateTitle(targetItem, newTitle) {
   }
 }
 
+function updateDescription(targetItem, newDescription) {
+  if (newDescription !== '') {
+    targetItem.description = newDescription
+  }
+}
+
+function updateDueDate(targetItem, newDueDate) {
+  if (newDueDate !== '') {
+    targetItem.dueDate = newDueDate
+  }
+}
+
+function updatePriority(targetItem, newPriority) {
+  if (newPriority !== '') {
+    targetItem.priority = newPriority
+  }
+}
+
+function updateCategory(targetItem, newCategory) {
+  if (newCategory !== '') {
+    targetItem.category = newCategory
+  }
+}
+
 window.getItem = getItem
-window.updateTitle = updateTitle
+window.updateDescription = updateDescription
