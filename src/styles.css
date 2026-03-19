@@ -66,6 +66,9 @@ body {
 .sidebar {
   background-color: rgb(60, 60, 60);
   box-shadow: 16px 0 32px blue;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-text {
@@ -79,15 +82,19 @@ body {
   flex-direction: column;
 }
 
-.sidebar .category-text {
-  padding: 1rem 2rem;
+.categories > button {
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
   font-size: 2rem;
+  padding: 1rem 2rem;
+  background-color: rgb(60, 60, 60);
 }
 
-.sidebar .category:hover {
+.categories > button:hover {
   background-color: rgb(0 0 255 / 25%);
 }
 
-.sidebar .category.selected {
+.categories > button.selected {
   background-color: rgb(0 0 255 / 75%);
 }
