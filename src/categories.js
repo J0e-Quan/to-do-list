@@ -47,7 +47,13 @@ export function retrieveStorage() {
   }
 }
 
+function clearStorage() {
+  localStorage.clear()
+  console.log('localStorage has been wiped!')
+}
+
 window.categories = categories
 window.newCategory = newCategory
 window.removeCategory = removeCategory
 window.getItem = getItem
+window.clearStorage = clearStorage
