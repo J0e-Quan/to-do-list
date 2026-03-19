@@ -12,6 +12,13 @@ export function placeItem(item) {
 }
 
 export function sortItems(category) {
-  categories[category].sort((a, b) => compareAsc(a.dueDate, b.dueDate))
+  categories[category].sort(compareItems) 
+  function compareItems(a, b) {
+    if (compareAsc(a.dueDate, b.dueDate) === 0) {
+      return compareAsc(a.priority, b.priority)
+    } else {
+      return compareAsc(a.dueDate, b.dueDate)
+    }
+  }
   console.log(categories[category])
 }

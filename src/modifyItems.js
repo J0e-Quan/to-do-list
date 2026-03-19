@@ -46,9 +46,10 @@ function updatePriority(targetItem, newPriority) {
 function updateCategory(targetItem, newCategory) {
   if (newCategory !== '') {
     targetItem.category = newCategory
-    
+
   }
 }
 
 window.getItem = getItem
 window.newDate = updateDueDate
+window.newPriority = updatePriority
