@@ -8,13 +8,14 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   let dueDate = parseISO(inputDueDate)
   let priority = inputPriority
   let category = inputCategory
-  let id = crypto.randomUUID()
+  const _id = crypto.randomUUID()
   let isTicked = false
-  const item = {title, description, dueDate, priority, category, id, isTicked}
+  const item = {title, description, dueDate, priority, category, isTicked,
+               get id() {return _id}}
   placeItem(item)
   addComplete(category)
   addDelete(category)
-  console.log(id)
+  console.log(_id)
   return {item}
 }
 
