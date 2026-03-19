@@ -13,31 +13,36 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   let isTicked = false
   const item = {title, description, dueDate, priority, category, isTicked, get id() {return _id}}
   placeItem(item)
-  addComplete(category)
+  addTick(category)
   addDelete(category)
   console.log(item.id)
   return {item}
 }
 
-export function addComplete(category) {
-  categories[category].forEach(item => {
-    if (!Object.hasOwn(item, 'isTicked')) {
+export function addTick() {
+  Object.values(categories).forEach((category) => {
+    console.log(category)
+    category.forEach(item => {
+      if (!Object.hasOwn(item, 'tick')) {
       item.tick = function() {
         item.isTicked = true
         updateCategory(item, 'completed')
       }
-    }
-  });
-} 
+      }
+    })
+  })
+}
 
-export function addDelete(category) {
-  categories[category].forEach(item => {
-    if (!Object.hasOwn(item, 'delete')) {
+export function addDelete() {
+  Object.values(categories).forEach((category) => {
+    category.forEach(item => {
+      if (!Object.hasOwn(item, 'delete')) {
       item.delete = function() {
         deleteItem(item)
       }
-    }
-  });
+      }
+    })
+  })
 } 
 
 window.newItem = newItem
