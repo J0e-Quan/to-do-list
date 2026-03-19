@@ -42,3 +42,9 @@ export function sortItems(category) {
   updateStorage()
   console.log(categories[category])
 }
+
+function viewCategory(category) {
+  console.log(categories[category])
+}
+
+window.viewCategory = viewCategory
