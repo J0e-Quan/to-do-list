@@ -26,7 +26,6 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
 
 export function addTick() {
   Object.values(categories).forEach((category) => {
-    console.log(category)
     category.forEach(item => {
       if (!Object.hasOwn(item, 'tick')) {
       item.tick = function() {
@@ -40,7 +39,6 @@ export function addTick() {
 
 export function addUntick() {
   Object.values(categories).forEach((category) => {
-    console.log(category)
     category.forEach(item => {
       if (!Object.hasOwn(item, 'untick')) {
       item.untick = function() {
