@@ -8,7 +8,7 @@ function newCategory(name) {
   } else if (name === '') {
     console.log('category name is empty!')
   }
-  console.log(categories)
+  updateStorage()
 }
 
 function removeCategory(name) {
@@ -17,7 +17,7 @@ function removeCategory(name) {
   } else if (name === 'completed' || name === 'default') {
     console.log('this category cannot be deleted!')
   }
-  console.log(categories)
+  updateStorage()
 }
 
 export function getItem(id) {

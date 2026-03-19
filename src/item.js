@@ -1,4 +1,4 @@
-import { deleteItem, placeItem } from "./view.js"
+import { deleteItem, moveTickedItem, placeItem } from "./view.js"
 import { parseISO } from "date-fns"
 import { categories } from "./categories.js"
 import { updateCategory } from "./modifyItems.js"
@@ -13,8 +13,9 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   let isTicked = false
   const item = {title, description, dueDate, priority, category, isTicked, get id() {return _id}}
   placeItem(item)
-  addTick(category)
-  addDelete(category)
+  addTick()
+  addUntick()
+  addDelete()
   console.log(item.id)
   return {item}
 }
@@ -26,7 +27,21 @@ export function addTick() {
       if (!Object.hasOwn(item, 'tick')) {
       item.tick = function() {
         item.isTicked = true
-        updateCategory(item, 'completed')
+        moveTickedItem(item)
+      }
+      }
+    })
+  })
+}
+
+export function addUntick() {
+  Object.values(categories).forEach((category) => {
+    console.log(category)
+    category.forEach(item => {
+      if (!Object.hasOwn(item, 'untick')) {
+      item.untick = function() {
+        item.isTicked = false
+        moveTickedItem(item)
       }
       }
     })

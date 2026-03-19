@@ -47,4 +47,17 @@ function viewCategory(category) {
   console.log(categories[category])
 }
 
+export function moveTickedItem(item) {
+  const existingItem = getItem(item.id)
+  if (existingItem !== undefined) {
+    deleteItem(existingItem)
+  }
+  if (item.isTicked === true) {
+    categories.completed.push(item)
+  } else if (item.isTicked === false) {
+    placeItem(item)
+  }
+  updateStorage()
+}
+
 window.viewCategory = viewCategory
