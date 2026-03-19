@@ -1,16 +1,20 @@
 import { deleteItem, moveTickedItem, placeItem } from "./view.js"
 import { parseISO } from "date-fns"
-import { categories } from "./categories.js"
-import { updateCategory } from "./modifyItems.js"
+import { categories, retrieveStorage } from './categories.js'
+
+retrieveStorage()
+addTick()
+addUntick()
+addDelete()
 
 export function newItem(inputTitle, inputDescription, inputDueDate, inputPriority, inputCategory) {
-  let title = inputTitle
-  let description = inputDescription
-  let dueDate = parseISO(inputDueDate)
-  let priority = inputPriority
-  let category = inputCategory
+  const title = inputTitle
+  const description = inputDescription
+  const dueDate = parseISO(inputDueDate)
+  const priority = inputPriority
+  const category = inputCategory
   const _id = crypto.randomUUID()
-  let isTicked = false
+  const isTicked = false
   const item = {title, description, dueDate, priority, category, isTicked, get id() {return _id}}
   placeItem(item)
   addTick()
