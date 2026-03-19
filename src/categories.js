@@ -1,7 +1,4 @@
-export const categories = {
-  completed: [],
-  default: [],
-}
+export let categories = {}
 
 function newCategory(name) {
   if (!Object.hasOwn(categories, name) && name !== '') {
@@ -35,6 +32,19 @@ export function getItem(id) {
   }
   console.log('item not found!')
   return undefined
+}
+
+export function updateStorage() {
+  const categoriesString = JSON.stringify(categories)
+  localStorage.setItem("allItems", categoriesString)
+}
+
+export function retrieveStorage() {
+  if (localStorage.getItem("allItems") !== null) {
+    categories = JSON.parse(localStorage.getItem("allItems"))
+  } else {
+    categories = {  completed: [], default: [],}
+  }
 }
 
 window.categories = categories

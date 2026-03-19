@@ -1,5 +1,5 @@
 import { compareAsc } from "date-fns"
-import { categories, getItem } from "./categories.js"
+import { categories, getItem, updateStorage } from "./categories.js"
 
 export function placeItem(item) {
   const existingItem = getItem(item.id)
@@ -21,8 +21,10 @@ export function deleteItem(item) {
     const existingItemIndex = category.findIndex((targetItem) => targetItem.id === item.id) 
     if (existingItemIndex !== -1) {
       category.splice(existingItemIndex, 1)
+      updateStorage()
       return
     }
+    // if there is no item to delete, nothing changes, so no need to updateStorage()
     console.log('no item to delete!')
   }     
 }
@@ -37,5 +39,6 @@ export function sortItems(category) {
       return compareAsc(a.dueDate, b.dueDate)
     }
   }
+  updateStorage()
   console.log(categories[category])
 }
