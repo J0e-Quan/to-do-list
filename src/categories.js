@@ -1,3 +1,5 @@
+import { renderNewCategory } from "./ui.js"
+
 export let categories = {}
 
 export function newCategory(name) {
@@ -42,8 +44,18 @@ export function updateStorage() {
 export function retrieveStorage() {
   if (localStorage.getItem("allItems") !== null) {
     categories = JSON.parse(localStorage.getItem("allItems"))
+    renderExistingCategories()
   } else {
     categories = {  completed: [], default: [],}
+  }
+}
+
+function renderExistingCategories() {
+  const allCategories = Object.getOwnPropertyNames(categories)
+  for (const category of allCategories) {
+    if (category !== 'completed' && category !== 'default') {
+      renderNewCategory(category)
+    }
   }
 }
 

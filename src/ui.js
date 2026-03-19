@@ -1,11 +1,11 @@
 const newCategoryBtn = document.querySelector('.new-category')
 
 export function renderNewCategoryForm() {
-  console.log('new form baby')
   const newCategoryForm = document.createElement('div')
   newCategoryForm.classList.add('new-category-form')
   const newCategoryFormBox = document.createElement('input')
   newCategoryFormBox.classList.add('new-category-form-box')
+  newCategoryFormBox.pattern = '/^[\\p{L}\\s]+$/u'
   newCategoryForm.appendChild(newCategoryFormBox)
   const newCategoryFormBtn = document.createElement('button')
   newCategoryFormBtn.type = 'button'

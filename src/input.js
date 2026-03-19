@@ -14,13 +14,18 @@ function createNewCategoryForm() {
 
 function createNewCategory() {
   const NewCategoryFormBox = document.querySelector('.new-category-form-box')
-  const categoryName = NewCategoryFormBox.value
-  if (categoryName !== '') {
+  const categoryName = (NewCategoryFormBox.value).trim()
+  const format = /^[\p{L}\s]+$/u
+  if (categoryName !== '' && format.test(categoryName)) {
     newCategory(categoryName)
     removeNewCategoryForm()
     renderNewCategory(categoryName)
     setTimeout(() => {
      newCategoryBtn.addEventListener('click', createNewCategoryForm)
     }, 10); // 10ms
+  } else if (categoryName === '') {
+    alert('Category name cannot be empty!')
+  } else if (format.test(categoryName) === false) {
+    alert('Category name cannot accept numbers and symbols!')
   }
 }
