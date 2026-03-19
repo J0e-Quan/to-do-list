@@ -53,7 +53,7 @@ export function retrieveStorage() {
 function renderExistingCategories() {
   const allCategories = Object.getOwnPropertyNames(categories)
   for (const category of allCategories) {
-    if (category !== 'completed' && category !== 'default') {
+    if (category !== 'Completed' && category !== 'Default') {
       renderNewCategory(category)
     }
   }

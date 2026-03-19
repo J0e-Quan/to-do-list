@@ -165,4 +165,81 @@ body {
 
 .content {
   grid-column: 2;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+[class="item-box"] {
+  display: grid;
+  grid-template-columns: 1fr 7fr 3fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+  box-shadow: 0 4px 16px blue;
+}
+
+.item-box {
+  background-color: rgb(60 60 60);
+  color: white;
+  border: 2px solid black;
+}
+
+.tick-box.setup {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 2rem;
+  color: white;
+  background-color: rgb(60 60 60);
+}
+
+.tick-box.setup:hover {
+  background-color: green;
+}
+
+.expand-arrow {
+  grid-column: 4;
+  grid-row: 1;
+  background-color: rgb(60 60 60);
+  font-size: 2rem;
+}
+
+.item-box.title {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  padding: 0.5rem 1rem;
+}
+
+.item-box.due-date {
+  grid-column: 3;
+  grid-row: 1;
+  min-width: 0;
+  font-size: 1rem;
+}
+
+.item-box.description {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  resize: none;
+  overflow-y: scroll;
+  font-size: 1rem;
+}
+
+.item-box.priority-selector {
+  grid-column: 1 / 3;
+  grid-row: 3;
+}
+
+.item-box.delete {
+  grid-column: 3 / -1;
+  grid-row: 3;
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  background-color: rgb(80, 0, 0);
+}
+
+.item-box.delete:hover {
+  background-color: red;
 }

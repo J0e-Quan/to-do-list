@@ -1,6 +1,6 @@
 import { newCategory } from "./categories.js";
 import { newItem } from "./item.js";
-import { removeNewCategoryForm, renderNewCategory, renderNewCategoryForm } from "./ui.js";
+import { removeNewCategoryForm, renderNewCategory, renderNewCategoryForm, renderNewItem } from "./ui.js";
 import { viewCategory } from "./view.js";
 
 const newCategoryBtn = document.querySelector('.new-category')
@@ -45,4 +45,11 @@ function selectCategory(btn) {
     category.classList.add('selected')
     viewCategory(category.textContent)
   }
+}
+
+const newItemBtn = document.querySelector('.new-item')
+newItemBtn.addEventListener('click', createNewItem)
+
+function createNewItem() {
+  renderNewItem()
 }
