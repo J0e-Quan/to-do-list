@@ -98,3 +98,21 @@ body {
 .categories > button.selected {
   background-color: rgb(0 0 255 / 75%);
 }
+
+.new-item {
+  border-radius: 64000000px;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  font-size: 5rem;
+  background-color: rgb(60 60 60);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 16px 32px blue;
+}
+
+.new-item:hover {
+  background-color: rgb(15, 15, 206);
+  font-size: 6rem;
+  padding: 0rem 1.65rem;
+}
