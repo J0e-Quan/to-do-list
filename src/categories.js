@@ -23,5 +23,21 @@ function removeCategory(name) {
   console.log(categories)
 }
 
+export function getItem(id) {
+  const allCategories = Object.values(categories)
+  for (const category of allCategories) {
+    const targetItem = category.find((item) => item.id === id)
+    if (targetItem !== undefined) {
+      console.log(targetItem)
+      window.targetItem = targetItem
+      return targetItem
+    }
+  }
+  console.log('item not found!')
+  return undefined
+}
+
+window.categories = categories
 window.newCategory = newCategory
 window.removeCategory = removeCategory
+window.getItem = getItem

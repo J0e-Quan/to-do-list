@@ -14,7 +14,7 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   placeItem(item)
   addComplete(category)
   addDelete(category)
-  console.log(_id)
+  console.log(item.id)
   return {item}
 }
 

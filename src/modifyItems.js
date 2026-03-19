@@ -1,55 +1,37 @@
-import { categories } from "./categories.js";
-import { sortItems } from "./view.js";
+import { placeItem, sortItems } from "./view.js";
 
-let targetItem
-
-function getItem(id) {
-  const allCategories = Object.values(categories)
-  for (const category of allCategories) {
-    targetItem = category.find((item) => item.id === id)
-    if (targetItem !== undefined) {
-      console.log(targetItem)
-      window.targetItem = targetItem
-      return
-    }
-  }
-  console.log('item not found!')
-  window.targetItem = targetItem
-}
-
-function updateTitle(targetItem, newTitle) {
+function updateTitle(item, newTitle) {
   if (newTitle !== '') {
-    targetItem.title = newTitle
+    item.title = newTitle
   }
 }
 
-function updateDescription(targetItem, newDescription) {
+function updateDescription(item, newDescription) {
   if (newDescription !== '') {
-    targetItem.description = newDescription
+    item.description = newDescription
   }
 }
 
-function updateDueDate(targetItem, newDueDate) {
+function updateDueDate(item, newDueDate) {
   if (newDueDate !== '') {
-    targetItem.dueDate = newDueDate
-    sortItems(targetItem.category)
+    item.dueDate = newDueDate
+    sortItems(item.category)
   }
 }
 
-function updatePriority(targetItem, newPriority) {
+function updatePriority(item, newPriority) {
   if (newPriority !== '') {
-    targetItem.priority = newPriority
-    sortItems(targetItem.category)
+    item.priority = newPriority
+    sortItems(item.category)
   }
 }
 
-function updateCategory(targetItem, newCategory) {
+function updateCategory(item, newCategory) {
   if (newCategory !== '') {
-    targetItem.category = newCategory
-
+    item.category = newCategory
+    placeItem(item)
   }
 }
 
-window.getItem = getItem
 window.newDate = updateDueDate
-window.newPriority = updatePriority
+window.updateCategory = updateCategory
