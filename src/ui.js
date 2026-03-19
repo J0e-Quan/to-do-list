@@ -4,13 +4,13 @@ export function renderNewCategoryForm() {
   const newCategoryForm = document.createElement('div')
   newCategoryForm.classList.add('new-category-form')
   const newCategoryFormBox = document.createElement('input')
-  newCategoryFormBox.classList.add('new-category-form-box')
+  newCategoryFormBox.classList.add('new-category-form', 'box')
   newCategoryFormBox.pattern = '/^[\\p{L}\\s]+$/u'
   newCategoryForm.appendChild(newCategoryFormBox)
   const newCategoryFormBtn = document.createElement('button')
   newCategoryFormBtn.type = 'button'
   newCategoryFormBtn.textContent = '✓'
-  newCategoryFormBtn.classList.add('new-category-form-btn')
+  newCategoryFormBtn.classList.add('new-category-form', 'btn')
   newCategoryForm.appendChild(newCategoryFormBtn)
   newCategoryBtn.appendChild(newCategoryForm)
   return newCategoryFormBtn

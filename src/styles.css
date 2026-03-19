@@ -123,7 +123,7 @@ body {
   position: relative;
 }
 
-.new-category-form {
+[class="new-category-form"] {
   position: absolute;
   width: 100%;
   top: 0;
@@ -135,7 +135,7 @@ body {
   grid-template-columns: 8fr 2fr;
 }
 
-.new-category-form-box {
+.new-category-form.box {
   min-width: 0;
   grid-column: 1 / 2;
   text-align: left;
@@ -148,7 +148,7 @@ body {
   border-right: 2px solid black;
 }
 
-.new-category-form-btn {
+.new-category-form.btn {
   grid-column: 2 / 3;
   padding: 0rem 1rem;
   font-size: 2rem;
@@ -159,7 +159,7 @@ body {
   border-left: 2px solid black;
 }
 
-.new-category-form-btn:hover {
+.new-category-form.btn:hover {
   background-color: green;
 }
 

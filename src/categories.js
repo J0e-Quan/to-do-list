@@ -46,7 +46,7 @@ export function retrieveStorage() {
     categories = JSON.parse(localStorage.getItem("allItems"))
     renderExistingCategories()
   } else {
-    categories = {  completed: [], default: [],}
+    categories = {  Completed: [], Default: [],}
   }
 }
 

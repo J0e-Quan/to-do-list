@@ -40,11 +40,9 @@ export function sortItems(category) {
     }
   }
   updateStorage()
-  console.log(categories[category])
 }
 
-function viewCategory(category) {
-  console.log(categories[category])
+export function viewCategory(category) {
 }
 
 export function moveTickedItem(item) {
