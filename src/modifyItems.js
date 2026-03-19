@@ -39,15 +39,16 @@ function updateDueDate(targetItem, newDueDate) {
 function updatePriority(targetItem, newPriority) {
   if (newPriority !== '') {
     targetItem.priority = newPriority
+    sortItems(targetItem.category)
   }
 }
 
 function updateCategory(targetItem, newCategory) {
   if (newCategory !== '') {
     targetItem.category = newCategory
-
+    
   }
 }
 
 window.getItem = getItem
-window.updateDescription = updateDescription
+window.newDate = updateDueDate
