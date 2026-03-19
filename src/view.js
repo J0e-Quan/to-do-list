@@ -3,17 +3,8 @@ import { categories, getItem } from "./categories.js"
 
 export function placeItem(item) {
   const existingItem = getItem(item.id)
-  console.log('existingItem: ' + existingItem)
   if (existingItem !== undefined) {
-    // delete existingItem
-    console.log('deleting existingItem...')
-    const allCategories = Object.values(categories)
-    for (const category of allCategories) {
-      const existingItemIndex = category.findIndex((targetItem) => targetItem.id === existingItem.id) 
-      if (existingItemIndex !== -1) {
-        category.splice(existingItemIndex, 1)
-      }
-    }   
+    deleteItem(existingItem)
   }
   const targetCategory = item.category
   if (Object.hasOwn(categories, targetCategory)) {
@@ -22,6 +13,18 @@ export function placeItem(item) {
   } else {
     console.log('category does not exist!')
   }
+}
+
+export function deleteItem(item) {
+  const allCategories = Object.values(categories)
+  for (const category of allCategories) {
+    const existingItemIndex = category.findIndex((targetItem) => targetItem.id === item.id) 
+    if (existingItemIndex !== -1) {
+      category.splice(existingItemIndex, 1)
+      return
+    }
+    console.log('no item to delete!')
+  }     
 }
 
 export function sortItems(category) {

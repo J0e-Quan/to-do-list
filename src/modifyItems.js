@@ -26,12 +26,13 @@ function updatePriority(item, newPriority) {
   }
 }
 
-function updateCategory(item, newCategory) {
+export function updateCategory(item, newCategory) {
   if (newCategory !== '') {
     item.category = newCategory
     placeItem(item)
   }
 }
 
-window.newDate = updateDueDate
+window.updateDueDate = updateDueDate
+window.updatePriority = updatePriority
 window.updateCategory = updateCategory
