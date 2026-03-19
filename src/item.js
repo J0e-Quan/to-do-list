@@ -19,6 +19,7 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   return {item}
 }
 
+// Move these to storage.js and remember to import them here
 function addComplete(category) {
   categories[category].forEach(item => {
     if (!Object.hasOwn(item, 'isTicked')) {
