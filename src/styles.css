@@ -59,11 +59,13 @@ button {
 }
 
 body {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
   background-color: black;
 }
 
 .sidebar {
+  grid-column: 1;
   background-color: rgb(60, 60, 60);
   box-shadow: 16px 0 32px blue;
   height: 100vh;
@@ -72,8 +74,8 @@ body {
 }
 
 .logo-text {
-  padding: 1rem 2rem;
-  font-size: 5rem;
+  padding: 1rem 1rem;
+  font-size: 4rem;
   margin-bottom: 2rem;
 }
 
@@ -87,7 +89,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 200;
   font-size: 2rem;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   background-color: rgb(60, 60, 60);
 }
 
@@ -115,4 +117,52 @@ body {
   background-color: rgb(15, 15, 206);
   font-size: 6rem;
   padding: 0rem 1.65rem;
+}
+
+.new-category {
+  position: relative;
+}
+
+.new-category-form {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: inherit;
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+}
+
+.new-category-form-box {
+  min-width: 0;
+  grid-column: 1 / 2;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(60 60 60);
+  border: 4px solid black;
+  border-right: 2px solid black;
+}
+
+.new-category-form-btn {
+  grid-column: 2 / 3;
+  padding: 0rem 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: rgb(60 60 60);
+  border: 4px solid black;
+  border-left: 2px solid black;
+}
+
+.new-category-form-btn:hover {
+  background-color: green;
+}
+
+.content {
+  grid-column: 2;
 }

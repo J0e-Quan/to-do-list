@@ -1,6 +1,6 @@
 export let categories = {}
 
-function newCategory(name) {
+export function newCategory(name) {
   if (!Object.hasOwn(categories, name) && name !== '') {
   categories[name] = []
   } else if (Object.hasOwn(categories, name)) {
@@ -11,7 +11,7 @@ function newCategory(name) {
   updateStorage()
 }
 
-function removeCategory(name) {
+export function removeCategory(name) {
   if (Object.hasOwn(categories, name && name !== 'completed' && name !== 'default')) {
     delete categories[name]
   } else if (name === 'completed' || name === 'default') {

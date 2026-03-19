@@ -1,3 +1,3 @@
 import './styles.css'
 import { addDelete, addTick, addUntick } from './item.js'
-import * as modifier from './modifyItems.js'
+import * as input from './input.js'
