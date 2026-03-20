@@ -369,3 +369,12 @@ body {
 .new-category-form {
   pointer-events: auto;
 }
+
+.completed {
+  text-decoration: line-through;
+}
+
+.delete.completed {
+  text-decoration: none;
+  grid-column: 4 / -1;
+}

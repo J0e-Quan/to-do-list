@@ -1,4 +1,5 @@
 import { categories } from "./categories.js"
+import { viewCategory } from "./view.js"
 
 const newCategoryBtn = document.querySelector('.new-category')
 
@@ -188,7 +189,12 @@ export function renderNewItem(item, targetId) {
   itemBox.id = targetId
   console.log(itemBox.id)
   content.appendChild(itemBox)
+  minimiseItem(expandableElements, expandArrow)
   const itemBoxContent = { itemBox, id: item.id, expandableElements, expandArrow }
+  if (item.isTicked === true) {
+    console.log('completed')
+    renderCompletedItems(titleBox, dueDateBox, descriptionBox, priorityBox, categoryBox, editBtn, deleteBtn)
+  }
   return itemBoxContent
 }
 
@@ -200,6 +206,16 @@ function convertPriority(priorityNum) {
   } else if (priorityNum === '3') {
     return 'Low'
   }
+}
+
+function renderCompletedItems(titleBox, dueDateBox, descriptionBox, priorityBox, categoryBox, editBtn, deleteBtn) {
+  titleBox.classList.add('completed')
+  dueDateBox.classList.add('completed')
+  descriptionBox.classList.add('completed')
+  priorityBox.classList.add('completed')
+  categoryBox.classList.add('completed')
+  deleteBtn.classList.add('completed')
+  editBtn.remove()
 }
 
 export function removeItem(id) {
@@ -218,7 +234,8 @@ export function minimiseItem(expandableElements, expandArrow) {
   expandArrow.textContent = '▽'
 }
 
-export function renderCategory(items) {
+export function renderCategory(category) {
+  const items = viewCategory(category)
   // all children of content is replaced with nothing to clear content
   content.replaceChildren()
   if (items !== undefined) {

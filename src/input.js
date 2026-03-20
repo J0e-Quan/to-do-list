@@ -57,8 +57,8 @@ function selectCategory(btn) {
       addBtn.classList.remove('hidden')      
     }
     category.classList.add('selected')
-    const items = viewCategory(category.textContent)
-    renderCategory(items)
+    renderCategory(category.textContent)
+    addButtons()
   } 
 }
 
@@ -78,9 +78,21 @@ function submitNewItem() {
   console.log(item)
   if (item !== undefined) {
     const targetId = newItem( item.title, item.description, item.dueDate, item.priority, item.category)
-    const itemBoxContent = renderNewItem(item, targetId)
-    itemBoxContent.itemBox.addEventListener('click', manageItem.bind(null, targetId, itemBoxContent.expandableElements, itemBoxContent.expandArrow))
+    renderNewItem(item, targetId)
+    addButtons()
   }
+}
+
+function addButtons() {
+  const allItemBoxes = document.querySelectorAll('[class="item-box"]')
+  allItemBoxes.forEach((itemBox) => {
+    const expandableElements = itemBox.querySelector('.expandable')
+    const expandArrow = itemBox.querySelector('.expand-arrow')
+    const targetId = itemBox.id
+    // event listener is removed then readded to prevent having more than 1 event listener
+    itemBox.removeEventListener('click', manageItem.bind(null, targetId, expandableElements, expandArrow))
+    itemBox.addEventListener('click', manageItem.bind(null, targetId, expandableElements, expandArrow))
+  })
 }
 
 function manageItem(id, expandableElements, expandArrow, btn) {
