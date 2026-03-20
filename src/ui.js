@@ -37,41 +37,48 @@ export function renderNewCategory(name) {
 
 const content = document.querySelector('.content')
 
-export function renderNewItem() {
-  const itemBox = document.createElement('div')
-  itemBox.classList.add('item-box')
+export function renderNewItemForm() {
+  const blurDiv = document.createElement('div')
+  blurDiv.classList.add('darken')
+  document.body.appendChild(blurDiv)
+  const itemForm = document.createElement('div')
+  itemForm.classList.add('item-box')
   const tickBox = document.createElement('button')
   tickBox.type = 'button'
   tickBox.classList.add('tick-box', 'setup')
   tickBox.textContent = '✓'
-  itemBox.appendChild(tickBox)
+  itemForm.appendChild(tickBox)
   const titleBox = document.createElement('input')
   titleBox.type = 'text'
   titleBox.placeholder = 'New item title'
   titleBox.classList.add('item-box', 'title')
-  itemBox.appendChild(titleBox)
+  itemForm.appendChild(titleBox)
   const dueDateBox = document.createElement('input')
   dueDateBox.type = 'date'
   dueDateBox.classList.add('item-box', 'due-date')
   dueDateBox.valueAsDate = new Date()
-  itemBox.appendChild(dueDateBox)
+  itemForm.appendChild(dueDateBox)
   const expandArrow = document.createElement('button')
   expandArrow.type = 'button'
   expandArrow.classList.add('expand-arrow')
   expandArrow.textContent = '△'  // down arrow symbol: ▽
-  itemBox.appendChild(expandArrow)
+  itemForm.appendChild(expandArrow)
   const descriptionBox = document.createElement('textarea')
   descriptionBox.classList.add('item-box', 'description')
   descriptionBox.placeholder = 'Input item details here'
-  itemBox.appendChild(descriptionBox)
+  itemForm.appendChild(descriptionBox)
   const prioritySelector = document.createElement('select')
   prioritySelector.classList.add('item-box', 'priority-selector')
   // add code or helper function to generate all possible options
-  itemBox.appendChild(prioritySelector)
+  itemForm.appendChild(prioritySelector)
+  const categorySelector = document.createElement('select')
+  categorySelector.classList.add('item-box', 'category-selector')
+  // add code or helper function to generate all posible options
+  itemForm.appendChild(categorySelector)
   const deleteBtn = document.createElement('button')
   deleteBtn.type = 'button'
   deleteBtn.classList.add('item-box', 'delete')
-  deleteBtn.textContent = 'Delete this item'
-  itemBox.appendChild(deleteBtn)
-  content.appendChild(itemBox)
+  deleteBtn.textContent = 'Cancel'
+  itemForm.appendChild(deleteBtn)
+  blurDiv.appendChild(itemForm)
 }

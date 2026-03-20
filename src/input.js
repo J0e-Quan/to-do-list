@@ -1,6 +1,6 @@
 import { newCategory, removeCategory } from "./categories.js";
 import { newItem } from "./item.js";
-import { removeNewCategoryForm, renderNewCategory, renderNewCategoryForm, renderNewItem } from "./ui.js";
+import { removeNewCategoryForm, renderNewCategory, renderNewCategoryForm, renderNewItemForm } from "./ui.js";
 import { viewCategory } from "./view.js";
 
 const newCategoryBtn = document.querySelector('.new-category')
@@ -58,5 +58,5 @@ const newItemBtn = document.querySelector('.new-item')
 newItemBtn.addEventListener('click', createNewItem)
 
 function createNewItem() {
-  renderNewItem()
+  renderNewItemForm()
 }
