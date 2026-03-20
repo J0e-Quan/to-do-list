@@ -234,6 +234,10 @@ body {
   border: 2px solid black;
 }
 
+.editing {
+  border: 2px solid orange;
+}
+
 .item-form.submit, .item-box.submit {
   grid-column: 1;
   grid-row: 1;
@@ -309,6 +313,10 @@ body {
   grid-row: 3;
 }
 
+.priority-selector.editing {
+  grid-column: 1 / 4;
+}
+
 .item-box.priority {
   grid-row: 2;
   font-family: 'Urbanist', serif;
@@ -321,6 +329,10 @@ body {
   width: 100%;
   grid-column: 3 / 4;
   grid-row: 3;
+}
+
+.category-selector.editing {
+  grid-column:  4 / 6;
 }
 
 .item-box.category {

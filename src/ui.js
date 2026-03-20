@@ -101,6 +101,13 @@ export function renderNewItemForm(title, dueDate, description, priority, categor
     }
     prioritySelector.value = priority
     categorySelector.value = category
+    deleteBtn.remove()
+    submitBtn.classList.add('editing')
+    titleBox.classList.add('editing')
+    dueDateBox.classList.add('editing')
+    descriptionBox.classList.add('editing')
+    prioritySelector.classList.add('editing')
+    categorySelector.classList.add('editing')
   }
   blurDiv.appendChild(itemForm)
 }

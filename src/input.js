@@ -67,7 +67,9 @@ newItemBtn.addEventListener('click', createNewItem)
 function createNewItem(existingTitle, existingDueDate, existingDescription, existingPriority, existingCategory) {
   renderNewItemForm(existingTitle, existingDueDate, existingDescription, existingPriority, existingCategory)
   const deleteBtn = document.querySelector('.item-form.delete')
-  deleteBtn.addEventListener('click', () => removeNewItemForm())
+  if (deleteBtn !== null) {
+    deleteBtn.addEventListener('click', () => removeNewItemForm())
+  }
   const submitBtn = document.querySelector('.item-form.submit')
   submitBtn.addEventListener('click', submitNewItem)
 }
@@ -86,7 +88,6 @@ function submitNewItem() {
     for (const category of allCategories) {
       if (category.textContent === item.category) {
         const targetCategory = category
-        console.log(targetCategory)
         targetCategory.classList.add('selected')
         break
       }
