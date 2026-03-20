@@ -110,10 +110,12 @@ function manageItem(id, expandableElements, expandArrow, btn) {
     if (targetItem.isTicked === false) {
       targetItem.tick()
       renderCategory(targetItem.category)
+      addButtons()
     } else if (targetItem.isTicked === true) {
       targetItem.untick()
       // ticked item's category does not change to completed, so 'Completed' must be manually chosen
       renderCategory('Completed')
+      addButtons()
     }
   } else if (target.classList.contains('expand-arrow')) {
     if (target.textContent === '▽') {
