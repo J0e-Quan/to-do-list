@@ -200,20 +200,20 @@ body {
   align-items: center;
 }
 
-[class="item-box"] {
+[class="item-form"] {
   display: grid;
   grid-template-columns: 1fr 2fr 3fr 3fr 1fr;
   grid-template-rows: 1fr 3fr 1fr;
-  box-shadow: 0 4px 16px blue;
+  box-shadow: 0 0 32px blue;
 }
 
-.item-box {
+.item-form {
   background-color: rgb(60 60 60);
   color: white;
   border: 2px solid black;
 }
 
-.tick-box.setup {
+.item-form.submit {
   grid-column: 1;
   grid-row: 1;
   font-size: 2rem;
@@ -221,7 +221,7 @@ body {
   background-color: rgb(60 60 60);
 }
 
-.tick-box.setup:hover {
+.item-form.submit:hover {
   background-color: green;
 }
 
@@ -232,7 +232,7 @@ body {
   font-size: 2rem;
 }
 
-.item-box.title {
+.item-form.title {
   grid-column: 2 / 4;
   grid-row: 1;
   font-family: 'Inter', sans-serif;
@@ -241,32 +241,35 @@ body {
   padding: 0.5rem 1rem;
 }
 
-.item-box.due-date {
+.item-form.due-date {
   grid-column: 4;
   grid-row: 1;
   min-width: 0;
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
-.item-box.description {
+.item-form.description {
   grid-column: 1 / -1;
   grid-row: 2;
   resize: none;
   overflow-y: scroll;
+  padding: 0.25rem 0.5rem;
   font-size: 1rem;
 }
 
-.item-box.priority-selector {
+.item-form.priority-selector {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
   grid-column: 1 / 3;
   grid-row: 3;
 }
 
-.item-box.category-selector {
+.item-form.category-selector {
   grid-column: 3 / 4;
   grid-row: 3;
 }
 
-.item-box.delete {
+.item-form.delete {
   grid-column: 4 / -1;
   grid-row: 3;
   font-family: 'Inter', sans-serif;
@@ -275,6 +278,6 @@ body {
   background-color: rgb(80, 0, 0);
 }
 
-.item-box.delete:hover {
+.item-form.delete:hover {
   background-color: red;
 }

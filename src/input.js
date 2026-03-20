@@ -1,6 +1,6 @@
 import { newCategory, removeCategory } from "./categories.js";
 import { newItem } from "./item.js";
-import { removeNewCategoryForm, renderNewCategory, renderNewCategoryForm, renderNewItemForm } from "./ui.js";
+import { removeNewCategoryForm, removeNewItemForm, renderNewCategory, renderNewCategoryForm, renderNewItemForm, submitNewItemForm } from "./ui.js";
 import { viewCategory } from "./view.js";
 
 const newCategoryBtn = document.querySelector('.new-category')
@@ -59,4 +59,16 @@ newItemBtn.addEventListener('click', createNewItem)
 
 function createNewItem() {
   renderNewItemForm()
+  const deleteBtn = document.querySelector('.delete')
+  deleteBtn.addEventListener('click', () => removeNewItemForm())
+  const submitBtn = document.querySelector('.item-form.submit')
+  submitBtn.addEventListener('click', submitNewItem)
+}
+
+function submitNewItem() {
+  const item = submitNewItemForm()
+  console.log(item)
+  if (item !== undefined) {
+    newItem( item.title, item.dueDate, item.description, item.category, item.priority)
+  }
 }

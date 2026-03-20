@@ -42,20 +42,20 @@ export function renderNewItemForm() {
   blurDiv.classList.add('darken')
   document.body.appendChild(blurDiv)
   const itemForm = document.createElement('div')
-  itemForm.classList.add('item-box')
-  const tickBox = document.createElement('button')
-  tickBox.type = 'button'
-  tickBox.classList.add('tick-box', 'setup')
-  tickBox.textContent = '✓'
-  itemForm.appendChild(tickBox)
+  itemForm.classList.add('item-form')
+  const submitBtn = document.createElement('button')
+  submitBtn.type = 'button'
+  submitBtn.classList.add('item-form', 'submit')
+  submitBtn.textContent = '✓'
+  itemForm.appendChild(submitBtn)
   const titleBox = document.createElement('input')
   titleBox.type = 'text'
   titleBox.placeholder = 'New item title'
-  titleBox.classList.add('item-box', 'title')
+  titleBox.classList.add('item-form', 'title')
   itemForm.appendChild(titleBox)
   const dueDateBox = document.createElement('input')
   dueDateBox.type = 'date'
-  dueDateBox.classList.add('item-box', 'due-date')
+  dueDateBox.classList.add('item-form', 'due-date')
   dueDateBox.valueAsDate = new Date()
   itemForm.appendChild(dueDateBox)
   const expandArrow = document.createElement('button')
@@ -64,21 +64,65 @@ export function renderNewItemForm() {
   expandArrow.textContent = '△'  // down arrow symbol: ▽
   itemForm.appendChild(expandArrow)
   const descriptionBox = document.createElement('textarea')
-  descriptionBox.classList.add('item-box', 'description')
-  descriptionBox.placeholder = 'Input item details here'
+  descriptionBox.classList.add('item-form', 'description')
+  descriptionBox.placeholder = 'Input item details here (OPTIONAL)'
   itemForm.appendChild(descriptionBox)
   const prioritySelector = document.createElement('select')
-  prioritySelector.classList.add('item-box', 'priority-selector')
-  // add code or helper function to generate all possible options
+  prioritySelector.classList.add('item-form', 'priority-selector')
+  const highPriority = document.createElement('option')
+  highPriority.value = 1
+  highPriority.textContent = 'High'
+  prioritySelector.appendChild(highPriority)
+  const mediumPriority = document.createElement('option')
+  mediumPriority.value = 2
+  mediumPriority.textContent = 'Medium'
+  prioritySelector.appendChild(mediumPriority)
+  const lowPriority = document.createElement('option')
+  lowPriority.value = 3
+  lowPriority.textContent = 'Low'
+  prioritySelector.appendChild(lowPriority)
   itemForm.appendChild(prioritySelector)
   const categorySelector = document.createElement('select')
-  categorySelector.classList.add('item-box', 'category-selector')
+  categorySelector.classList.add('item-form', 'category-selector')
   // add code or helper function to generate all posible options
   itemForm.appendChild(categorySelector)
   const deleteBtn = document.createElement('button')
   deleteBtn.type = 'button'
-  deleteBtn.classList.add('item-box', 'delete')
+  deleteBtn.classList.add('item-form', 'delete')
   deleteBtn.textContent = 'Cancel'
   itemForm.appendChild(deleteBtn)
   blurDiv.appendChild(itemForm)
+}
+
+function generateCategoryOptions(prioritySelector) {
+
+}
+
+export function removeNewItemForm() {
+  const blurDiv = document.querySelector('.darken')
+  blurDiv.remove()
+}
+
+export function submitNewItemForm() {
+  const title = document.querySelector('.item-form.title').value
+  const dueDate = document.querySelector('.item-form.due-date').value
+  const description = document.querySelector('.item-form.description').value
+  const category = document.querySelector('.item-form.category-selector').value
+  const priority = document.querySelector('.item-form.priority-selector').value
+  if (checkNewItemValidity(title, dueDate, category, priority)) {
+    removeNewItemForm()
+    const newItem = { title, dueDate, description, category, priority}
+    return newItem
+  } else {
+    return undefined
+  }
+}
+
+function checkNewItemValidity(title, dueDate, category, priority) {
+  if (title !== '' && dueDate !== '' && category !== '' && priority !== '') {
+    return true
+  } else {
+    alert('Item is invalid! Please ensure you have inputted the title, due date, category and priority before submitting!')
+    return false
+  }
 }
