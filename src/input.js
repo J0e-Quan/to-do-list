@@ -78,6 +78,19 @@ function submitNewItem() {
     const targetId = newItem( item.title, item.description, item.dueDate, item.priority, item.category)
     renderNewItem(item, targetId)
     renderCategory(item.category)
+    const previousCategory = document.querySelector('.selected')
+    if (previousCategory !== undefined) {
+      previousCategory.classList.remove('selected')
+    }
+    const allCategories = document.querySelectorAll('.category')
+    for (const category of allCategories) {
+      if (category.textContent === item.category) {
+        const targetCategory = category
+        console.log(targetCategory)
+        targetCategory.classList.add('selected')
+        break
+      }
+    }
     addButtons()
   }
 }
