@@ -60,11 +60,6 @@ export function renderNewItemForm() {
   dueDateBox.classList.add('item-form', 'due-date')
   dueDateBox.valueAsDate = new Date()
   itemForm.appendChild(dueDateBox)
-  const expandArrow = document.createElement('button')
-  expandArrow.type = 'button'
-  expandArrow.classList.add('expand-arrow')
-  expandArrow.textContent = '△'  // down arrow symbol: ▽
-  itemForm.appendChild(expandArrow)
   const descriptionBox = document.createElement('textarea')
   descriptionBox.classList.add('item-form', 'description')
   descriptionBox.placeholder = 'Input item details here (OPTIONAL)'
@@ -177,6 +172,11 @@ export function renderNewItem(item, targetId) {
   categoryBox.classList.add('item-box', 'category')
   categoryBox.textContent = 'Category: ' + item.category
   expandableElements.appendChild(categoryBox)
+  const editBtn = document.createElement('button')
+  editBtn.type = 'button'
+  editBtn.classList.add('item-box', 'edit')
+  editBtn.textContent = 'Edit'
+  expandableElements.appendChild(editBtn)
   const deleteBtn = document.createElement('button')
   deleteBtn.type = 'button'
   deleteBtn.classList.add('item-box', 'delete')
