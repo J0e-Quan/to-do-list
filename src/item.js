@@ -1,5 +1,5 @@
 import { deleteItem, moveTickedItem, placeItem } from "./view.js"
-import { parseISO } from "date-fns"
+import { formatISO, parseISO } from "date-fns"
 import { categories, retrieveStorage, updateStorage } from './categories.js'
 
 retrieveStorage()
@@ -10,7 +10,7 @@ addDelete()
 export function newItem(inputTitle, inputDescription, inputDueDate, inputPriority, inputCategory) {
   const title = inputTitle
   const description = inputDescription
-  const dueDate = parseISO(inputDueDate)
+  const dueDate = formatISO(parseISO(inputDueDate), { representation: 'date'})
   const priority = inputPriority
   const category = inputCategory
   const _id = crypto.randomUUID()

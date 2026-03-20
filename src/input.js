@@ -38,16 +38,23 @@ categories.addEventListener('click', selectCategory)
 function selectCategory(btn) {
   const category = btn.target
   if (category.classList.contains('delete-category')) {
-    const deletebtn = btn.target
-    const targetCategory = deletebtn.previousElementSibling
+    const deleteBtn = btn.target
+    const targetCategory = deleteBtn.previousElementSibling
     removeCategory(targetCategory.textContent)
     targetCategory.remove()
-    deletebtn.remove()
+    deleteBtn.remove()
   } else if (!category.classList.contains('new-category') && !category.classList.contains('new-category-form' && !category.classList.contains('delete-category'))) {
     console.log('selecting category')
     const previousCategory = document.querySelector('.selected')
     if (previousCategory !== null) {
       previousCategory.classList.remove('selected')
+    }
+    if (category.textContent === 'Completed') {
+      const addBtn = document.querySelector('.new-item')
+      addBtn.classList.add('hidden')
+    } else if (category.textContent !== 'Completed') {
+      const addBtn = document.querySelector('.new-item')
+      addBtn.classList.remove('hidden')      
     }
     category.classList.add('selected')
     const items = viewCategory(category.textContent)

@@ -361,3 +361,11 @@ body {
 .hidden {
   display: none;
 }
+
+.disabled {
+  pointer-events: none;
+}
+
+.new-category-form {
+  pointer-events: auto;
+}

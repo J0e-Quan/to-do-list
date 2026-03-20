@@ -66,6 +66,7 @@ function renderExistingCategories() {
 
 function clearStorage() {
   localStorage.clear()
+  categories = {  Completed: [], Default: [],}  
   console.log('localStorage has been wiped!')
 }
 

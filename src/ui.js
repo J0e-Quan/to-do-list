@@ -16,12 +16,14 @@ export function renderNewCategoryForm() {
   newCategoryFormBtn.classList.add('new-category-form', 'btn')
   newCategoryForm.appendChild(newCategoryFormBtn)
   newCategoryBtn.appendChild(newCategoryForm)
+    newCategoryBtn.classList.add('disabled')
   return newCategoryFormBtn
 }
 
 export function removeNewCategoryForm() {
   const newCategoryForm = document.querySelector('.new-category-form')
   newCategoryForm.remove()
+  newCategoryBtn.classList.remove('disabled')
 }
 
 export function renderNewCategory(name) {
@@ -219,8 +221,9 @@ export function minimiseItem(expandableElements, expandArrow) {
 export function renderCategory(items) {
   // all children of content is replaced with nothing to clear content
   content.replaceChildren()
-  console.log(items)
-  for (const item of items) {
-    renderNewItem(item, item.id)
+  if (items !== undefined) {
+    for (const item of items) {
+      renderNewItem(item, item.id)
+    }
   }
 }
