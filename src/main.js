@@ -1,3 +1,7 @@
 import './styles.css'
-import { addDelete, addTick, addUntick } from './item.js'
-import * as input from './input.js'
+import { newItem } from './item.js'
+import { addButtons } from './input.js'
+import { renderCategory } from './ui.js'
+
+renderCategory('Default')
+addButtons()

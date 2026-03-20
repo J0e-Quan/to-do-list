@@ -42,7 +42,7 @@ export function renderNewCategory(name) {
 
 const content = document.querySelector('.content')
 
-export function renderNewItemForm() {
+export function renderNewItemForm(title, dueDate, description, priority, category) {
   const blurDiv = document.createElement('div')
   blurDiv.classList.add('darken')
   document.body.appendChild(blurDiv)
@@ -91,6 +91,17 @@ export function renderNewItemForm() {
   deleteBtn.classList.add('item-form', 'delete')
   deleteBtn.textContent = 'Cancel'
   itemForm.appendChild(deleteBtn)
+  if (title !== undefined && dueDate !== undefined && priority !== undefined && category !== undefined) {
+    titleBox.value = title
+    dueDateBox.value = dueDate
+    if (description === 'No description') {
+      descriptionBox.value = ''
+    } else if (description !== 'No description') {
+      descriptionBox.value = description
+    }
+    prioritySelector.value = priority
+    categorySelector.value = category
+  }
   blurDiv.appendChild(itemForm)
 }
 

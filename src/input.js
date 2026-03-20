@@ -65,8 +65,8 @@ function selectCategory(btn) {
 const newItemBtn = document.querySelector('.new-item')
 newItemBtn.addEventListener('click', createNewItem)
 
-function createNewItem() {
-  renderNewItemForm()
+function createNewItem(existingTitle, existingDueDate, existingDescription, existingPriority, existingCategory) {
+  renderNewItemForm(existingTitle, existingDueDate, existingDescription, existingPriority, existingCategory)
   const deleteBtn = document.querySelector('.item-form.delete')
   deleteBtn.addEventListener('click', () => removeNewItemForm())
   const submitBtn = document.querySelector('.item-form.submit')
@@ -75,7 +75,6 @@ function createNewItem() {
 
 function submitNewItem() {
   const item = submitNewItemForm()
-  console.log(item)
   if (item !== undefined) {
     const targetId = newItem( item.title, item.description, item.dueDate, item.priority, item.category)
     renderNewItem(item, targetId)
@@ -83,7 +82,7 @@ function submitNewItem() {
   }
 }
 
-function addButtons() {
+export function addButtons() {
   const allItemBoxes = document.querySelectorAll('[class="item-box"]')
   allItemBoxes.forEach((itemBox) => {
     const expandableElements = itemBox.querySelector('.expandable')
@@ -100,9 +99,18 @@ function manageItem(id, expandableElements, expandArrow, btn) {
   if (target.classList.contains('delete')) {
     deleteItem(id)
     removeItem(id)
+  } else if (target.classList.contains('edit')) {
+    const targetItem = getItem(id)
+    deleteItem(id)
+    removeItem(id)
+    createNewItem(targetItem.title, targetItem.dueDate, targetItem.description, targetItem.priority, targetItem.category)
   } else if (target.classList.contains('submit')) {
     const targetItem = getItem(id)
-    targetItem.tick()
+    if (targetItem.isTicked === false) {
+      targetItem.tick()
+    } else if (targetItem.isTicked === true) {
+      targetItem.untick()
+    }
   } else if (target.classList.contains('expand-arrow')) {
     if (target.textContent === '▽') {
       expandItem(expandableElements, expandArrow)
