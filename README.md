@@ -26,7 +26,10 @@ Live demo link: https://j0e-quan.github.io/to-do-list/
 
 ## Gallery:
 
-![alt-text](img-path)
+![picture showing initial state of the todo list](./readme-assets/initial.jpeg)
+![picture showing the process of creating a new item to add to the todo list](./readme-assets/newitem.jpeg)
+![picture showing a list of completed items](./readme-assets/completed.jpeg)
+![picture showing an existing item being edited](./readme-assets/editing.jpeg)
 
 ## Getting started:
 
