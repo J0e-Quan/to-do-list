@@ -117,13 +117,15 @@ export function removeNewItemForm() {
 export function submitNewItemForm() {
   const title = document.querySelector('.item-form.title').value
   const dueDate = document.querySelector('.item-form.due-date').value
-  const description = document.querySelector('.item-form.description').value
+  let description = document.querySelector('.item-form.description').value
   const category = document.querySelector('.item-form.category-selector').value
   const priority = document.querySelector('.item-form.priority-selector').value
   if (checkNewItemValidity(title, dueDate, category, priority)) {
+    if (description === '') {
+      description = 'No description'
+    }
     removeNewItemForm()
     const newItem = { title, dueDate, description, category, priority}
-    renderNewItem(newItem)
     return newItem
   } else {
     return undefined
@@ -139,7 +141,7 @@ function checkNewItemValidity(title, dueDate, category, priority) {
   }
 }
 
-function renderNewItem(item) {
+export function renderNewItem(item) {
   const itemBox = document.createElement('div')
   itemBox.classList.add('item-box')
   const submitBtn = document.createElement('button')
@@ -160,25 +162,30 @@ function renderNewItem(item) {
   expandArrow.classList.add('expand-arrow')
   expandArrow.textContent = '△'  // down arrow symbol: ▽
   itemBox.appendChild(expandArrow)
+  const expandableElements = document.createElement('div')
+  expandableElements.classList.add('expandable')
   const descriptionBox = document.createElement('p')
   descriptionBox.classList.add('item-box', 'description')
   descriptionBox.textContent = item.description
-  itemBox.appendChild(descriptionBox)
+  expandableElements.appendChild(descriptionBox)
   const priorityBox = document.createElement('h2')
   priorityBox.classList.add('item-box', 'priority')
   const priority = convertPriority(item.priority)
   priorityBox.textContent = 'Priority: ' + priority
-  itemBox.appendChild(priorityBox)
+  expandableElements.appendChild(priorityBox)
   const categoryBox = document.createElement('h2')
   categoryBox.classList.add('item-box', 'category')
   categoryBox.textContent = 'Category: ' + item.category
-  itemBox.appendChild(categoryBox)
+  expandableElements.appendChild(categoryBox)
   const deleteBtn = document.createElement('button')
   deleteBtn.type = 'button'
   deleteBtn.classList.add('item-box', 'delete')
   deleteBtn.textContent = 'Delete'
-  itemBox.appendChild(deleteBtn)
+  expandableElements.appendChild(deleteBtn)
+  itemBox.appendChild(expandableElements)
   content.appendChild(itemBox)
+  const itemBoxContent = { submitBtn, expandArrow, deleteBtn, id: item.id, expandableElements }
+  return itemBoxContent
 }
 
 function convertPriority(priorityNum) {

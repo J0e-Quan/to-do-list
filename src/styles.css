@@ -203,8 +203,12 @@ body {
 [class="item-form"], [class="item-box"] {
   display: grid;
   grid-template-columns: 1fr 2fr 3fr 3fr 1fr;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 3fr;
   box-shadow: 0 0 32px blue;
+}
+
+.content .item-box {
+  grid-template-rows: auto auto;
 }
 
 .item-form, .item-box {
@@ -249,26 +253,41 @@ body {
 }
 
 .item-box.due-date {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
 }
 
-.item-form.description, .item-box.description {
+.expandable {
   grid-column: 1 / -1;
   grid-row: 2;
-  resize: none;
-  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr 3fr 1fr;
+  grid-template-rows: fit-content fit-content;
+}
+
+.description, .item-box.description {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  height: auto;
   padding: 0.25rem 0.5rem;
   font-size: 1rem;
 }
 
-.item-form.priority-selector, .item-box.priority {
+.item-box.description {
+  grid-row: 1;
+}
+
+.priority-selector, .item-box.priority {
   font-size: 2rem;
   padding: 0.5rem 1rem;
   grid-column: 1 / 3;
   grid-row: 3;
 }
 
-.item-form.category-selector, .item-box.category {
+.item-box.priority {
+  grid-row: 2;
+}
+
+.category-selector, .item-box.category {
   font-size: 2rem;
   padding: 0.5rem 1rem;
   width: 100%;
@@ -276,13 +295,21 @@ body {
   grid-row: 3;
 }
 
-.item-form.delete, .item-box.delete {
+.item-box.category {
+  grid-row: 2;
+}
+
+.delete, .item-box.delete {
   grid-column: 4 / -1;
   grid-row: 3;
   font-family: 'Inter', sans-serif;
   font-size: 2rem;
   font-weight: 200;
   background-color: rgb(80, 0, 0);
+}
+
+.item-box.delete {
+  grid-row: 2;
 }
 
 .item-form.delete:hover, .item-box.delete:hover {
