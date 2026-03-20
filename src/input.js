@@ -1,7 +1,7 @@
-import { newCategory, removeCategory } from "./categories.js";
+import { getItem, newCategory, removeCategory } from "./categories.js";
 import { newItem } from "./item.js";
-import { removeNewCategoryForm, removeNewItemForm, renderNewCategory, renderNewCategoryForm, renderNewItem, renderNewItemForm, submitNewItemForm } from "./ui.js";
-import { viewCategory } from "./view.js";
+import { removeItem, removeNewCategoryForm, removeNewItemForm, renderNewCategory, renderNewCategoryForm, renderNewItem, renderNewItemForm, submitNewItemForm } from "./ui.js";
+import { deleteItem, viewCategory } from "./view.js";
 
 const newCategoryBtn = document.querySelector('.new-category')
 
@@ -59,7 +59,7 @@ newItemBtn.addEventListener('click', createNewItem)
 
 function createNewItem() {
   renderNewItemForm()
-  const deleteBtn = document.querySelector('.delete')
+  const deleteBtn = document.querySelector('.item-form.delete')
   deleteBtn.addEventListener('click', () => removeNewItemForm())
   const submitBtn = document.querySelector('.item-form.submit')
   submitBtn.addEventListener('click', submitNewItem)
@@ -69,15 +69,21 @@ function submitNewItem() {
   const item = submitNewItemForm()
   console.log(item)
   if (item !== undefined) {
-    newItem( item.title, item.dueDate, item.description, item.category, item.priority)
-    const itemBoxContent = renderNewItem(item)
-    // itemBoxContent.submitBtn.addEventListener('click', tickItem)
-    // itemBoxContent.deleteBtn.addEventListener('click', removeItem)
-    itemBoxContent.expandArrow.addEventListener('click', expandItem)
+    const targetId = newItem( item.title, item.dueDate, item.description, item.priority, item.category)
+    const itemBoxContent = renderNewItem(item, targetId)
+    itemBoxContent.itemBox.addEventListener('click', manageItem.bind(null, targetId))
   }
 }
 
-function expandItem(btn) {
-  btn.target.textContent = '△'
-  console.log(btn)
+function manageItem(id, btn) {
+  const target = btn.target
+  if (target.classList.contains('delete')) {
+    deleteItem(id)
+    removeItem(id)
+  } else if (target.classList.contains('submit')) {
+    const targetItem = getItem(id)
+    targetItem.tick()
+  } else if (target.classList.contains('expand-arrow')) {
+    // expand or shrink
+  }
 }

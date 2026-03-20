@@ -45,11 +45,13 @@ export function updateStorage() {
 }
 
 export function retrieveStorage() {
+  console.log('retrieving storage...')
   if (localStorage.getItem("allItems") !== null) {
     categories = JSON.parse(localStorage.getItem("allItems"))
     renderExistingCategories()
   } else {
     categories = {  Completed: [], Default: [],}
+    updateStorage()
   }
 }
 

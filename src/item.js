@@ -1,6 +1,6 @@
 import { deleteItem, moveTickedItem, placeItem } from "./view.js"
 import { parseISO } from "date-fns"
-import { categories, retrieveStorage } from './categories.js'
+import { categories, retrieveStorage, updateStorage } from './categories.js'
 
 retrieveStorage()
 addTick()
@@ -20,8 +20,9 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   addTick()
   addUntick()
   addDelete()
+  updateStorage()
   console.log(item.id)
-  return {item}
+  return item.id
 }
 
 export function addTick() {

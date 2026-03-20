@@ -141,7 +141,7 @@ function checkNewItemValidity(title, dueDate, category, priority) {
   }
 }
 
-export function renderNewItem(item) {
+export function renderNewItem(item, targetId) {
   const itemBox = document.createElement('div')
   itemBox.classList.add('item-box')
   const submitBtn = document.createElement('button')
@@ -160,7 +160,7 @@ export function renderNewItem(item) {
   const expandArrow = document.createElement('button')
   expandArrow.type = 'button'
   expandArrow.classList.add('expand-arrow')
-  expandArrow.textContent = '△'  // down arrow symbol: ▽
+  expandArrow.textContent = '▽'  
   itemBox.appendChild(expandArrow)
   const expandableElements = document.createElement('div')
   expandableElements.classList.add('expandable')
@@ -183,8 +183,10 @@ export function renderNewItem(item) {
   deleteBtn.textContent = 'Delete'
   expandableElements.appendChild(deleteBtn)
   itemBox.appendChild(expandableElements)
+  itemBox.id = targetId
+  console.log(itemBox.id)
   content.appendChild(itemBox)
-  const itemBoxContent = { submitBtn, expandArrow, deleteBtn, id: item.id, expandableElements }
+  const itemBoxContent = { itemBox, id: item.id }
   return itemBoxContent
 }
 
@@ -196,4 +198,10 @@ function convertPriority(priorityNum) {
   } else if (priorityNum === '3') {
     return 'Low'
   }
+}
+
+export function removeItem(id) {
+  const targetItemBox = document.getElementById(id)
+  console.log(targetItemBox)
+  targetItemBox.remove()
 }

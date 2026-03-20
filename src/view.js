@@ -15,12 +15,13 @@ export function placeItem(item) {
   }
 }
 
-export function deleteItem(item) {
+export function deleteItem(id) {
   const allCategories = Object.values(categories)
   for (const category of allCategories) {
-    const existingItemIndex = category.findIndex((targetItem) => targetItem.id === item.id) 
+    const existingItemIndex = category.findIndex((targetItem) => targetItem.id === id) 
     if (existingItemIndex !== -1) {
       category.splice(existingItemIndex, 1)
+      console.log('item deleted!')
       updateStorage()
       return
     }
@@ -46,12 +47,10 @@ export function viewCategory(category) {
 }
 
 export function moveTickedItem(item) {
-  const existingItem = getItem(item.id)
-  if (existingItem !== undefined) {
-    deleteItem(existingItem)
-  }
+  // the old item is deleted, but the function still has the item as an argument so it pushes it to Completed
+  deleteItem(item.id)
   if (item.isTicked === true) {
-    categories.completed.push(item)
+    categories.Completed.push(item)
   } else if (item.isTicked === false) {
     placeItem(item)
   }
