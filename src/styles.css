@@ -69,6 +69,7 @@ body {
   background-color: rgb(50 50 50);
   box-shadow: 16px 0 32px blue;
   height: 100vh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -194,6 +195,8 @@ body {
 .content {
   grid-column: 2;
   padding: 1rem 2rem;
+  height: 100vh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
