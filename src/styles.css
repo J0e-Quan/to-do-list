@@ -259,6 +259,8 @@ body {
 
 .item-box.due-date {
   padding: 0.5rem 0.5rem;
+  font-family: 'Urbanist', serif;
+  font-weight: 550;
 }
 
 .expandable {
@@ -290,6 +292,8 @@ body {
 
 .item-box.priority {
   grid-row: 2;
+  font-family: 'Urbanist', serif;
+  font-weight: 550;
 }
 
 .category-selector, .item-box.category {
@@ -302,6 +306,8 @@ body {
 
 .item-box.category {
   grid-row: 2;
+  font-family: 'Urbanist', serif;
+  font-weight: 550;
 }
 
 .delete, .item-box.delete {
