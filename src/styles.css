@@ -69,9 +69,8 @@ body {
   background-color: rgb(60, 60, 60);
   box-shadow: 16px 0 32px blue;
   height: 100vh;
-  display: grid;
-  grid-auto-column: 4fr 1fr;
-  grid-auto-row: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-text {
@@ -81,8 +80,9 @@ body {
 }
 
 .categories {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-auto-columns: 4fr 1fr;
+  grid-auto-rows: fit-content;
 }
 
 .categories > button {
@@ -104,11 +104,19 @@ body {
 }
 
 .categories > button.delete-category {
+  padding: 0;
   background-color: rgb(80, 0, 0);
+  grid-column: 2;
 }
 
 .categories > button.delete-category:hover {
-  background-colour: red;
+  background-color: red;
+  stroke:  white;
+  fill: white;
+}
+
+.delete-category-icon {
+  pointer-events: none;
 }
 
 .new-item {
@@ -129,7 +137,8 @@ body {
   padding: 0rem 1.65rem;
 }
 
-.new-category {
+.categories button.new-category {
+  grid-column: 1 / 3;
   position: relative;
 }
 

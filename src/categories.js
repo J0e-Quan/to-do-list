@@ -14,9 +14,11 @@ export function newCategory(name) {
 }
 
 export function removeCategory(name) {
-  if (Object.hasOwn(categories, name && name !== 'completed' && name !== 'default')) {
+  console.log(name)
+  if (Object.hasOwn(categories, name) && name !== 'Completed' && name !== 'Default') {
+    console.log('deleted!')
     delete categories[name]
-  } else if (name === 'completed' || name === 'default') {
+  } else if (name === 'Completed' || name === 'Default') {
     console.log('this category cannot be deleted!')
   }
   updateStorage()
