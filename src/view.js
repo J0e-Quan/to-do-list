@@ -1,5 +1,5 @@
-import { compareAsc } from "date-fns"
-import { categories, getItem, updateStorage } from "./categories.js"
+import { compareAsc } from 'date-fns'
+import { categories, getItem, updateStorage } from './categories.js'
 
 export function placeItem(item) {
   const existingItem = getItem(item.id)
@@ -16,17 +16,17 @@ export function placeItem(item) {
 export function deleteItem(id) {
   const allCategories = Object.values(categories)
   for (const category of allCategories) {
-    const existingItemIndex = category.findIndex((targetItem) => targetItem.id === id) 
+    const existingItemIndex = category.findIndex((targetItem) => targetItem.id === id)
     if (existingItemIndex !== -1) {
       category.splice(existingItemIndex, 1)
       updateStorage()
       return
     }
-  }     
+  }
 }
 
 export function sortItems(category) {
-  categories[category].sort(compareItems) 
+  categories[category].sort(compareItems)
   function compareItems(a, b) {
     // compareAsc returns 0 if the dates are identical
     if (compareAsc(a.dueDate, b.dueDate) === 0) {

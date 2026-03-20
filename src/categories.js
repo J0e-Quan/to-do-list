@@ -1,10 +1,10 @@
-import { renderNewCategory } from "./ui.js"
+import { renderNewCategory } from './ui.js'
 
 export let categories = {}
 
 export function newCategory(name) {
   if (!Object.hasOwn(categories, name) && name !== '') {
-  categories[name] = []
+    categories[name] = []
   }
   updateStorage()
 }
@@ -30,15 +30,15 @@ export function getItem(id) {
 
 export function updateStorage() {
   const categoriesString = JSON.stringify(categories)
-  localStorage.setItem("allItems", categoriesString)
+  localStorage.setItem('allItems', categoriesString)
 }
 
 export function retrieveStorage() {
-  if (localStorage.getItem("allItems") !== null) {
-    categories = JSON.parse(localStorage.getItem("allItems"))
+  if (localStorage.getItem('allItems') !== null) {
+    categories = JSON.parse(localStorage.getItem('allItems'))
     renderExistingCategories()
   } else {
-    categories = {  Completed: [], Default: [],}
+    categories = { Completed: [], Default: [] }
     updateStorage()
   }
 }
@@ -54,7 +54,7 @@ function renderExistingCategories() {
 
 function clearStorage() {
   localStorage.clear()
-  categories = {  Completed: [], Default: [],}  
+  categories = { Completed: [], Default: [] }
 }
 
 window.categories = categories

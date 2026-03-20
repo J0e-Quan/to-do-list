@@ -1,5 +1,5 @@
-import { deleteItem, moveTickedItem, placeItem } from "./view.js"
-import { formatISO, parseISO } from "date-fns"
+import { deleteItem, moveTickedItem, placeItem } from './view.js'
+import { formatISO, parseISO } from 'date-fns'
 import { categories, retrieveStorage, updateStorage } from './categories.js'
 
 retrieveStorage()
@@ -10,12 +10,22 @@ addDelete()
 export function newItem(inputTitle, inputDescription, inputDueDate, inputPriority, inputCategory) {
   const title = inputTitle
   const description = inputDescription
-  const dueDate = formatISO(parseISO(inputDueDate), { representation: 'date'})
+  const dueDate = formatISO(parseISO(inputDueDate), { representation: 'date' })
   const priority = inputPriority
   const category = inputCategory
   const _id = crypto.randomUUID()
   const isTicked = false
-  const item = {title, description, dueDate, priority, category, isTicked, get id() {return _id}}
+  const item = {
+    title,
+    description,
+    dueDate,
+    priority,
+    category,
+    isTicked,
+    get id() {
+      return _id
+    }
+  }
   placeItem(item)
   addTick()
   addUntick()
@@ -26,12 +36,12 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
 
 export function addTick() {
   Object.values(categories).forEach((category) => {
-    category.forEach(item => {
+    category.forEach((item) => {
       if (!Object.hasOwn(item, 'tick')) {
-      item.tick = function() {
-        item.isTicked = true
-        moveTickedItem(item)
-      }
+        item.tick = function () {
+          item.isTicked = true
+          moveTickedItem(item)
+        }
       }
     })
   })
@@ -39,12 +49,12 @@ export function addTick() {
 
 export function addUntick() {
   Object.values(categories).forEach((category) => {
-    category.forEach(item => {
+    category.forEach((item) => {
       if (!Object.hasOwn(item, 'untick')) {
-      item.untick = function() {
-        item.isTicked = false
-        moveTickedItem(item)
-      }
+        item.untick = function () {
+          item.isTicked = false
+          moveTickedItem(item)
+        }
       }
     })
   })
@@ -52,14 +62,14 @@ export function addUntick() {
 
 export function addDelete() {
   Object.values(categories).forEach((category) => {
-    category.forEach(item => {
+    category.forEach((item) => {
       if (!Object.hasOwn(item, 'delete')) {
-      item.delete = function() {
-        deleteItem(item)
-      }
+        item.delete = function () {
+          deleteItem(item)
+        }
       }
     })
   })
-} 
+}
 
 window.newItem = newItem
