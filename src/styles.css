@@ -103,6 +103,14 @@ body {
   background-color: rgb(0 0 255 / 75%);
 }
 
+.categories > button.delete-category {
+  background-color: rgb(80, 0, 0);
+}
+
+.categories > button.delete-category:hover {
+  background-colour: red;
+}
+
 .new-item {
   border-radius: 64000000px;
   padding: 0.5rem 2rem;
