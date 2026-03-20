@@ -70,5 +70,6 @@ function submitNewItem() {
   console.log(item)
   if (item !== undefined) {
     newItem( item.title, item.dueDate, item.description, item.category, item.priority)
+    
   }
 }

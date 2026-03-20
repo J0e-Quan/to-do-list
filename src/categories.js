@@ -41,6 +41,7 @@ export function getItem(id) {
 export function updateStorage() {
   const categoriesString = JSON.stringify(categories)
   localStorage.setItem("allItems", categoriesString)
+  console.log('storage updated!')
 }
 
 export function retrieveStorage() {

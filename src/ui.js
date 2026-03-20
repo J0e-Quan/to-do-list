@@ -1,3 +1,5 @@
+import { categories } from "./categories.js"
+
 const newCategoryBtn = document.querySelector('.new-category')
 
 export function renderNewCategoryForm() {
@@ -84,7 +86,7 @@ export function renderNewItemForm() {
   itemForm.appendChild(prioritySelector)
   const categorySelector = document.createElement('select')
   categorySelector.classList.add('item-form', 'category-selector')
-  // add code or helper function to generate all posible options
+  generateCategoryOptions(categorySelector)
   itemForm.appendChild(categorySelector)
   const deleteBtn = document.createElement('button')
   deleteBtn.type = 'button'
@@ -94,8 +96,17 @@ export function renderNewItemForm() {
   blurDiv.appendChild(itemForm)
 }
 
-function generateCategoryOptions(prioritySelector) {
-
+function generateCategoryOptions(categorySelector) {
+  const allCategories = Object.getOwnPropertyNames(categories)
+  for (let i = 0; i < allCategories.length; i ++) {
+    const categoryName = allCategories[i]
+    if (categoryName !== 'Completed') {
+      const categoryOption = document.createElement('option')
+      categoryOption.value = categoryName
+      categoryOption.textContent = categoryName
+      categorySelector.appendChild(categoryOption)
+    }
+  }
 }
 
 export function removeNewItemForm() {
@@ -112,6 +123,7 @@ export function submitNewItemForm() {
   if (checkNewItemValidity(title, dueDate, category, priority)) {
     removeNewItemForm()
     const newItem = { title, dueDate, description, category, priority}
+    renderNewItem(newItem)
     return newItem
   } else {
     return undefined
@@ -124,5 +136,57 @@ function checkNewItemValidity(title, dueDate, category, priority) {
   } else {
     alert('Item is invalid! Please ensure you have inputted the title, due date, category and priority before submitting!')
     return false
+  }
+}
+
+function renderNewItem(item) {
+  const itemBox = document.createElement('div')
+  itemBox.classList.add('item-box')
+  const submitBtn = document.createElement('button')
+  submitBtn.type = 'button'
+  submitBtn.classList.add('item-box', 'submit')
+  submitBtn.textContent = '✓'
+  itemBox.appendChild(submitBtn)
+  const titleBox = document.createElement('h2')
+  titleBox.textContent = item.title
+  titleBox.classList.add('item-box', 'title')
+  itemBox.appendChild(titleBox)
+  const dueDateBox = document.createElement('h2')
+  dueDateBox.classList.add('item-box', 'due-date')
+  dueDateBox.textContent = item.dueDate
+  itemBox.appendChild(dueDateBox)
+  const expandArrow = document.createElement('button')
+  expandArrow.type = 'button'
+  expandArrow.classList.add('expand-arrow')
+  expandArrow.textContent = '△'  // down arrow symbol: ▽
+  itemBox.appendChild(expandArrow)
+  const descriptionBox = document.createElement('p')
+  descriptionBox.classList.add('item-box', 'description')
+  descriptionBox.textContent = item.description
+  itemBox.appendChild(descriptionBox)
+  const priorityBox = document.createElement('h2')
+  priorityBox.classList.add('item-box', 'priority')
+  const priority = convertPriority(item.priority)
+  priorityBox.textContent = 'Priority: ' + priority
+  itemBox.appendChild(priorityBox)
+  const categoryBox = document.createElement('h2')
+  categoryBox.classList.add('item-box', 'category')
+  categoryBox.textContent = 'Category: ' + item.category
+  itemBox.appendChild(categoryBox)
+  const deleteBtn = document.createElement('button')
+  deleteBtn.type = 'button'
+  deleteBtn.classList.add('item-box', 'delete')
+  deleteBtn.textContent = 'Delete'
+  itemBox.appendChild(deleteBtn)
+  content.appendChild(itemBox)
+}
+
+function convertPriority(priorityNum) {
+  if (priorityNum === '1') {
+    return 'High'
+  } else if (priorityNum === '2') {
+    return 'Medium'
+  } else if (priorityNum === '3') {
+    return 'Low'
   }
 }
