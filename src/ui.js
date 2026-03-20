@@ -204,7 +204,7 @@ export function renderNewItem(item, targetId) {
   const itemBoxContent = { itemBox, id: item.id, expandableElements, expandArrow }
   if (item.isTicked === true) {
     console.log('completed')
-    renderCompletedItems(titleBox, dueDateBox, descriptionBox, priorityBox, categoryBox, editBtn, deleteBtn)
+    renderCompletedItems(titleBox, dueDateBox, descriptionBox, priorityBox, categoryBox, submitBtn, editBtn, deleteBtn)
   }
   return itemBoxContent
 }
@@ -219,12 +219,13 @@ function convertPriority(priorityNum) {
   }
 }
 
-function renderCompletedItems(titleBox, dueDateBox, descriptionBox, priorityBox, categoryBox, editBtn, deleteBtn) {
+function renderCompletedItems(titleBox, dueDateBox, descriptionBox, priorityBox, categoryBox, submitBtn, editBtn, deleteBtn) {
   titleBox.classList.add('completed')
   dueDateBox.classList.add('completed')
   descriptionBox.classList.add('completed')
   priorityBox.classList.add('completed')
   categoryBox.classList.add('completed')
+  submitBtn.classList.add('completed')
   deleteBtn.classList.add('completed')
   editBtn.remove()
 }
