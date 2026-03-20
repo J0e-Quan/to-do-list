@@ -21,7 +21,6 @@ export function newItem(inputTitle, inputDescription, inputDueDate, inputPriorit
   addUntick()
   addDelete()
   updateStorage()
-  console.log(item.id)
   return item.id
 }
 

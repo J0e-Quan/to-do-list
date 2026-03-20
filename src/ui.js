@@ -198,12 +198,10 @@ export function renderNewItem(item, targetId) {
   expandableElements.appendChild(deleteBtn)
   itemBox.appendChild(expandableElements)
   itemBox.id = targetId
-  console.log(itemBox.id)
   content.appendChild(itemBox)
   minimiseItem(expandableElements, expandArrow)
   const itemBoxContent = { itemBox, id: item.id, expandableElements, expandArrow }
   if (item.isTicked === true) {
-    console.log('completed')
     renderCompletedItems(titleBox, dueDateBox, descriptionBox, priorityBox, categoryBox, submitBtn, editBtn, deleteBtn)
   }
   return itemBoxContent
@@ -232,7 +230,6 @@ function renderCompletedItems(titleBox, dueDateBox, descriptionBox, priorityBox,
 
 export function removeItem(id) {
   const targetItemBox = document.getElementById(id)
-  console.log(targetItemBox)
   targetItemBox.remove()
 }
 

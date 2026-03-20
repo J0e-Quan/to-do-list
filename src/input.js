@@ -44,7 +44,6 @@ function selectCategory(btn) {
     targetCategory.remove()
     deleteBtn.remove()
   } else if (!category.classList.contains('new-category') && !category.classList.contains('new-category-form' && !category.classList.contains('delete-category'))) {
-    console.log('selecting category')
     const previousCategory = document.querySelector('.selected')
     if (previousCategory !== null) {
       previousCategory.classList.remove('selected')

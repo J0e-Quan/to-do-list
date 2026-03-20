@@ -10,8 +10,6 @@ export function placeItem(item) {
   if (Object.hasOwn(categories, targetCategory)) {
     categories[targetCategory].push(item)
     sortItems(targetCategory)
-  } else {
-    console.log('category does not exist!')
   }
 }
 
@@ -21,12 +19,9 @@ export function deleteItem(id) {
     const existingItemIndex = category.findIndex((targetItem) => targetItem.id === id) 
     if (existingItemIndex !== -1) {
       category.splice(existingItemIndex, 1)
-      console.log('item deleted!')
       updateStorage()
       return
     }
-    // if there is no item to delete, nothing changes, so no need to updateStorage()
-    console.log('no item to delete!')
   }     
 }
 
