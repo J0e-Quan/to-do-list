@@ -215,3 +215,12 @@ export function minimiseItem(expandableElements, expandArrow) {
   expandableElements.classList.add('hidden')
   expandArrow.textContent = '▽'
 }
+
+export function renderCategory(items) {
+  // all children of content is replaced with nothing to clear content
+  content.replaceChildren()
+  console.log(items)
+  for (const item of items) {
+    renderNewItem(item, item.id)
+  }
+}

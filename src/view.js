@@ -44,6 +44,7 @@ export function sortItems(category) {
 }
 
 export function viewCategory(category) {
+  return categories[category]
 }
 
 export function moveTickedItem(item) {

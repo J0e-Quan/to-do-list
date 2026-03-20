@@ -1,6 +1,6 @@
 import { getItem, newCategory, removeCategory } from "./categories.js";
 import { newItem } from "./item.js";
-import { expandItem, minimiseItem, removeItem, removeNewCategoryForm, removeNewItemForm, renderNewCategory, renderNewCategoryForm, renderNewItem, renderNewItemForm, submitNewItemForm } from "./ui.js";
+import { expandItem, minimiseItem, removeItem, removeNewCategoryForm, removeNewItemForm, renderCategory, renderNewCategory, renderNewCategoryForm, renderNewItem, renderNewItemForm, submitNewItemForm } from "./ui.js";
 import { deleteItem, viewCategory } from "./view.js";
 
 const newCategoryBtn = document.querySelector('.new-category')
@@ -50,7 +50,8 @@ function selectCategory(btn) {
       previousCategory.classList.remove('selected')
     }
     category.classList.add('selected')
-    viewCategory(category.textContent)
+    const items = viewCategory(category.textContent)
+    renderCategory(items)
   } 
 }
 
@@ -69,7 +70,7 @@ function submitNewItem() {
   const item = submitNewItemForm()
   console.log(item)
   if (item !== undefined) {
-    const targetId = newItem( item.title, item.dueDate, item.description, item.priority, item.category)
+    const targetId = newItem( item.title, item.description, item.dueDate, item.priority, item.category)
     const itemBoxContent = renderNewItem(item, targetId)
     itemBoxContent.itemBox.addEventListener('click', manageItem.bind(null, targetId, itemBoxContent.expandableElements, itemBoxContent.expandArrow))
   }
@@ -91,4 +92,3 @@ function manageItem(id, expandableElements, expandArrow, btn) {
     }
   }
 }
-
