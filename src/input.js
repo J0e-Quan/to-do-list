@@ -1,7 +1,7 @@
 import { getItem, newCategory, removeCategory } from "./categories.js";
 import { newItem } from "./item.js";
 import { expandItem, minimiseItem, removeItem, removeNewCategoryForm, removeNewItemForm, renderCategory, renderNewCategory, renderNewCategoryForm, renderNewItem, renderNewItemForm, submitNewItemForm } from "./ui.js";
-import { deleteItem, viewCategory } from "./view.js";
+import { deleteItem } from "./view.js";
 
 const newCategoryBtn = document.querySelector('.new-category')
 
@@ -78,6 +78,7 @@ function submitNewItem() {
   if (item !== undefined) {
     const targetId = newItem( item.title, item.description, item.dueDate, item.priority, item.category)
     renderNewItem(item, targetId)
+    renderCategory(item.category)
     addButtons()
   }
 }
@@ -108,8 +109,11 @@ function manageItem(id, expandableElements, expandArrow, btn) {
     const targetItem = getItem(id)
     if (targetItem.isTicked === false) {
       targetItem.tick()
+      renderCategory(targetItem.category)
     } else if (targetItem.isTicked === true) {
       targetItem.untick()
+      // ticked item's category does not change to completed, so 'Completed' must be manually chosen
+      renderCategory('Completed')
     }
   } else if (target.classList.contains('expand-arrow')) {
     if (target.textContent === '▽') {
