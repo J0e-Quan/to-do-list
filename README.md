@@ -2,17 +2,23 @@
 
 To-do list project based on The Odin Project curriculum
 
-Live demo link:
+Live demo link: https://j0e-quan.github.io/to-do-list/
 
 ## Technologies used:
 
--
+- HTML for basic page layout
+- CSS for styling elements and use of web fonts (Inter for headings, Urbanist for body text)
+- Flexbox and Grid for organising elements
+- JavaScript for handling logic and UI rendering
 - npm and webpack for managing and bundling code modules
 - Git for version control
 
 ## Key features:
 
--
+- Items can be created, edited and deleted
+- New categories can be created and deleted for improved item organisation
+- Completed items can be "unticked" to return them to their original location
+- Simple and elegant UI improves ease of use and user experience
 
 ## Credits:
 
