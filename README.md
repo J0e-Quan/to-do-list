@@ -16,7 +16,7 @@ Live demo link:
 
 ## Credits:
 
--
+- trash can icon was from [SVGRepo](https://www.svgrepo.com/svg/446750/trash-bin)
 
 ## Gallery:
 
