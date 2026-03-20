@@ -241,6 +241,10 @@ body {
   font-size: 2rem;
 }
 
+.expand-arrow:hover {
+  background-color: rgb(100 100 100);
+}
+
 .item-form.title, .item-box.title {
   grid-column: 2 / 4;
   grid-row: 1;
@@ -342,4 +346,8 @@ body {
 .item-box.edit:hover {
   color: black;
   background-color: orange;
+}
+
+.hidden {
+  display: none;
 }

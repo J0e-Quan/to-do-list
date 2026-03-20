@@ -186,7 +186,7 @@ export function renderNewItem(item, targetId) {
   itemBox.id = targetId
   console.log(itemBox.id)
   content.appendChild(itemBox)
-  const itemBoxContent = { itemBox, id: item.id }
+  const itemBoxContent = { itemBox, id: item.id, expandableElements, expandArrow }
   return itemBoxContent
 }
 
@@ -204,4 +204,14 @@ export function removeItem(id) {
   const targetItemBox = document.getElementById(id)
   console.log(targetItemBox)
   targetItemBox.remove()
+}
+
+export function expandItem(expandableElements, expandArrow) {
+  expandableElements.classList.remove('hidden')
+  expandArrow.textContent = '△'
+}
+
+export function minimiseItem(expandableElements, expandArrow) {
+  expandableElements.classList.add('hidden')
+  expandArrow.textContent = '▽'
 }
