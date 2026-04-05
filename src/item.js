@@ -71,5 +71,3 @@ export function addDelete() {
     })
   })
 }
-
-window.newItem = newItem

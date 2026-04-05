@@ -52,5 +52,3 @@ export function moveTickedItem(item) {
   }
   updateStorage()
 }
-
-window.viewCategory = viewCategory

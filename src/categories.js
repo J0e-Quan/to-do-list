@@ -21,7 +21,6 @@ export function getItem(id) {
   for (const category of allCategories) {
     const targetItem = category.find((item) => item.id === id)
     if (targetItem !== undefined) {
-      window.targetItem = targetItem
       return targetItem
     }
   }
@@ -51,14 +50,3 @@ function renderExistingCategories() {
     }
   }
 }
-
-function clearStorage() {
-  localStorage.clear()
-  categories = { Completed: [], Default: [] }
-}
-
-window.categories = categories
-window.newCategory = newCategory
-window.removeCategory = removeCategory
-window.getItem = getItem
-window.clearStorage = clearStorage
